@@ -20,6 +20,8 @@
 		C08D32DD1CE028BD0061D52E /* SpriteKitDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08D32DC1CE028BD0061D52E /* SpriteKitDemoUITests.swift */; };
 		C08D32ED1CE029690061D52E /* HSGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C08D32EC1CE029690061D52E /* HSGameScene.sks */; };
 		C08D32EF1CE029990061D52E /* HSGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08D32EE1CE029990061D52E /* HSGameScene.swift */; };
+		C0A0DB111CE1DE3400F602A4 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = C0A0DB0F1CE1DE3400F602A4 /* background-music-aac.caf */; };
+		C0A0DB121CE1DE3400F602A4 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = C0A0DB101CE1DE3400F602A4 /* pew-pew-lei.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		C08D32DE1CE028BD0061D52E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C08D32EC1CE029690061D52E /* HSGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HSGameScene.sks; sourceTree = "<group>"; };
 		C08D32EE1CE029990061D52E /* HSGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSGameScene.swift; sourceTree = "<group>"; };
+		C0A0DB0F1CE1DE3400F602A4 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
+		C0A0DB101CE1DE3400F602A4 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		C08D32B71CE028BD0061D52E /* SpriteKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C0A0DB0E1CE1DE3400F602A4 /* Sounds */,
 				C08D32B81CE028BD0061D52E /* AppDelegate.swift */,
 				C08D32BA1CE028BD0061D52E /* GameScene.sks */,
 				C08D32BC1CE028BD0061D52E /* GameScene.swift */,
@@ -141,6 +146,15 @@
 				C08D32DE1CE028BD0061D52E /* Info.plist */,
 			);
 			path = SpriteKitDemoUITests;
+			sourceTree = "<group>";
+		};
+		C0A0DB0E1CE1DE3400F602A4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C0A0DB0F1CE1DE3400F602A4 /* background-music-aac.caf */,
+				C0A0DB101CE1DE3400F602A4 /* pew-pew-lei.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +225,7 @@
 				TargetAttributes = {
 					C08D32B41CE028BD0061D52E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = CM4R8DMWXB;
 					};
 					C08D32CC1CE028BD0061D52E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -247,8 +262,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A0DB121CE1DE3400F602A4 /* pew-pew-lei.caf in Resources */,
 				C08D32BB1CE028BD0061D52E /* GameScene.sks in Resources */,
 				C08D32C71CE028BD0061D52E /* LaunchScreen.storyboard in Resources */,
+				C0A0DB111CE1DE3400F602A4 /* background-music-aac.caf in Resources */,
 				C08D32C41CE028BD0061D52E /* Assets.xcassets in Resources */,
 				C08D32C21CE028BD0061D52E /* Main.storyboard in Resources */,
 				C08D32ED1CE029690061D52E /* HSGameScene.sks in Resources */,
@@ -425,10 +442,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpriteKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hansoncoder.SpriteKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -436,10 +456,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpriteKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hansoncoder.SpriteKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

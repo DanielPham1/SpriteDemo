@@ -7,13 +7,26 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 let playerName = "player"
 
+
 class MyGameScene: SKScene {
 
+    // 敌人
     var monsters = [SKSpriteNode]()
+    // 飞镖
     var projectiles = [SKSpriteNode]()
+    // 音效
+    lazy var projectileSoundEffectAction = SKAction.playSoundFileNamed("pew-pew-lei", waitForCompletion: false)
+    let bgmPlayer: AVAudioPlayer = {
+        let bgmPath = NSBundle.mainBundle().pathForResource("background-music-aac", ofType: "caf")
+        let bgmPlayer = try! AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: bgmPath!))
+        bgmPlayer.numberOfLoops = -1
+        return bgmPlayer
+    }()
+    
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -22,7 +35,7 @@ class MyGameScene: SKScene {
         backgroundColor = SKColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         let player = SKSpriteNode(imageNamed: "player")
         player.name = playerName
-        player.position = CGPointMake(player.size.width * 0.5, player.size.height * 0.5)
+        player.position = CGPointMake(player.size.width * 0.5, frame.size.height * 0.5)
         addChild(player)
         
         // 添加敌人
@@ -31,6 +44,9 @@ class MyGameScene: SKScene {
         }
         let actionWaitNextMonster = SKAction.waitForDuration(1.0)
         runAction(SKAction.repeatActionForever(SKAction.sequence([actionAddMonster,actionWaitNextMonster])))
+        
+        // 播放背景音乐
+        bgmPlayer.play()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -104,7 +120,9 @@ class MyGameScene: SKScene {
             let realMoveDuration =  CGFloat(length) / velocity
             
             // 执行飞镖移动操作，移动结束将移除飞镖
-            projectile.runAction(SKAction.moveTo(realDest, duration: Double(realMoveDuration))){ [unowned self] in
+            let moveAction = SKAction.moveTo(realDest, duration: Double(realMoveDuration))
+            let projectileCastAction = SKAction.group([moveAction, projectileSoundEffectAction])
+            projectile.runAction(projectileCastAction){ [unowned self] in
                 self.projectiles.removeAtIndex(self.projectiles.indexOf(projectile)!)
                 projectile.removeFromParent()
             }
