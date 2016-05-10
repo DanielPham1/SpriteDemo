@@ -20,7 +20,10 @@ class MyGameScene: SKScene {
     var projectiles = [SKSpriteNode]()
     // 音效
     lazy var projectileSoundEffectAction = SKAction.playSoundFileNamed("pew-pew-lei", waitForCompletion: false)
-    let bgmPlayer: AVAudioPlayer = {
+    // 击退敌人
+    var monstersDestroyed = 0
+    
+    var bgmPlayer: AVAudioPlayer? = {
         let bgmPath = NSBundle.mainBundle().pathForResource("background-music-aac", ofType: "caf")
         let bgmPlayer = try! AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: bgmPath!))
         bgmPlayer.numberOfLoops = -1
@@ -46,7 +49,7 @@ class MyGameScene: SKScene {
         runAction(SKAction.repeatActionForever(SKAction.sequence([actionAddMonster,actionWaitNextMonster])))
         
         // 播放背景音乐
-        bgmPlayer.play()
+        bgmPlayer?.play()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -79,6 +82,10 @@ class MyGameScene: SKScene {
         let actionMoveDone = SKAction.runBlock { [unowned self] in
            self.monsters.removeAtIndex(self.monsters.indexOf(monster)!)
             monster.removeFromParent()
+            
+            // 敌人移动到屏幕边缘，跳转场景（输）
+            self.changeToResultSceneWithWon(false)
+            
         }
         
         monster.runAction(SKAction.sequence([actionMove,actionMoveDone]))
@@ -138,27 +145,47 @@ class MyGameScene: SKScene {
         
         for projectile in projectiles {
             
+            // 标记中飞镖的敌人monster
             var monstersToDelete = [SKSpriteNode]()
             for monster in monsters {
                 if CGRectIntersectsRect(projectile.frame, monster.frame) {
                     monstersToDelete.append(monster)
+                    
+                    // 击中敌人，统计数量
+                    monstersDestroyed += 1
+                    if monstersDestroyed >= 30 {
+                        // 击中人数达到30人，跳转场景（赢）
+                        changeToResultSceneWithWon(true)
+                    }
                 }
             }
             
+            // 将中飞镖的敌人移除
             for monster in monstersToDelete {
                 monsters.removeAtIndex(monsters.indexOf(monster)!)
                 monster.removeFromParent()
             }
             
+            // 若该飞镖击中敌人，标记飞镖
             if monstersToDelete.count > 0 {
                 projectilesToDelete.append(projectile)
             }
         }
         
+        // 移除击中敌人的飞镖
         for projectile in projectilesToDelete {
             projectiles.removeAtIndex(projectiles.indexOf(projectile)!)
             projectile.removeFromParent()
         }
+    }
+    
+    func changeToResultSceneWithWon(won: Bool) {
+        bgmPlayer?.stop()
+        bgmPlayer = nil
+        
+        let resultScene = MyGameResultScene(size: self.size, won: won)
+        let reveal = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 1.0)
+        self.scene?.view?.presentScene(resultScene, transition: reveal)
     }
     
 }

@@ -22,6 +22,7 @@
 		C08D32EF1CE029990061D52E /* HSGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08D32EE1CE029990061D52E /* HSGameScene.swift */; };
 		C0A0DB111CE1DE3400F602A4 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = C0A0DB0F1CE1DE3400F602A4 /* background-music-aac.caf */; };
 		C0A0DB121CE1DE3400F602A4 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = C0A0DB101CE1DE3400F602A4 /* pew-pew-lei.caf */; };
+		C0A0DB141CE1EA3D00F602A4 /* MyGameResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A0DB131CE1EA3D00F602A4 /* MyGameResultScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		C08D32EE1CE029990061D52E /* HSGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSGameScene.swift; sourceTree = "<group>"; };
 		C0A0DB0F1CE1DE3400F602A4 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		C0A0DB101CE1DE3400F602A4 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
+		C0A0DB131CE1EA3D00F602A4 /* MyGameResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGameResultScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				C08D32EE1CE029990061D52E /* HSGameScene.swift */,
 				C01482501CE07E05008CDC55 /* SpaceshipScene.swift */,
 				C06442651CE1BDC000F239B9 /* MyGameScene.swift */,
+				C0A0DB131CE1EA3D00F602A4 /* MyGameResultScene.swift */,
 			);
 			path = SpriteKitDemo;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				C08D32BF1CE028BD0061D52E /* GameViewController.swift in Sources */,
 				C01482511CE07E05008CDC55 /* SpaceshipScene.swift in Sources */,
 				C08D32B91CE028BD0061D52E /* AppDelegate.swift in Sources */,
+				C0A0DB141CE1EA3D00F602A4 /* MyGameResultScene.swift in Sources */,
 				C06442661CE1BDC000F239B9 /* MyGameScene.swift in Sources */,
 				C08D32EF1CE029990061D52E /* HSGameScene.swift in Sources */,
 			);
